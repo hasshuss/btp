@@ -1,135 +1,94 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>George v btb - Menuiseries à petit prix</title>
-
-    <!-- SEO basique -->
-    <meta name="description" content="Fenêtres, portes et portes-fenêtres à petit prix. Fabrication française, isolation thermique et acoustique haut de gamme. Devis gratuit.">
-    <meta name="keywords" content="fenêtres, portes, menuiserie, isolation, devis gratuit, Paris">
-    <meta name="author" content="George v btb">
-
-    <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="George v btb - Menuiseries à petit prix">
-    <meta property="og:description" content="Fabrication française, isolation thermique et acoustique haut de gamme. Demandez votre devis gratuit.">
-    <meta property="og:url" content="https://hasshuss.github.io/">
-    <meta property="og:image" content="https://hasshuss.github.io/btp/images/logo.jpeg">
-    <meta property="og:locale" content="fr_FR">
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="George v btb - Menuiseries à petit prix">
-    <meta name="twitter:description" content="Fenêtres et portes haute performance à prix compétitifs. Devis gratuit.">
-    <meta name="twitter:image" content="https://hasshuss.github.io/btp/images/logo.jpeg">
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/jpeg" href="images/logo.jpeg">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Direct Usine — Menuiseries sur mesure</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <section class="hero-banner">
+    <img src="img/hero-banner.png" alt="Maison avec volets, fenêtres et porte de garage sur mesure">
+    <div class="hero-overlay">
+      <span class="hero-badge">-15% sur votre projet</span>
+    </div>
+  </section>
 
-    <!-- EN-TÊTE / NAVIGATION -->
-    <header>
-        <nav>
-            <div class="logo"><img src="./images/logo.jpeg"></div>
-            <ul class="nav-links">
-                <li><a href="#accueil">Accueil</a></li>
-                <li><a href="#produits">Nos fenêtres</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+  <section class="page-intro wrap">
+    <h1>Menuiseries sur mesure<br>direct usine au meilleur prix</h1>
+    <p class="lead">Grâce au configurateur, obtenez immédiatement un prix et votre devis en ligne à vos dimensions.</p>
+  </section>
 
-    <!-- SECTION HERO (Accueil) -->
-    <section id="accueil" class="hero">
-        <div class="hero-content">
-            <h1>Menuiseries à petits prix !</h1>
-            <p>Fabrication française, isolation thermique et acoustique haut de gamme, optimisé DPE.</p>
-            <a href="#contact" class="btn">Demander un devis gratuit</a>
+  <section class="section" style="padding-top:12px">
+    <div class="wrap">
+      <div class="product-grid">
+        <a class="card" href="configurateur-fenetre.html">
+          <div class="card-visual"><img src="img/cat-fenetre.png" alt="Fenêtre PVC"></div>
+          <h3>Fenêtre PVC</h3>
+          <p>Fenêtres, portes-fenêtres et baies sur mesure.</p>
+        </a>
+        <a class="card" href="configurateur-volet.html">
+          <div class="card-visual"><img src="img/cat-volet.png" alt="Volet roulant"></div>
+          <h3>Volet roulant</h3>
+          <p>Rénovation, traditionnel ou monobloc. Prix en direct.</p>
+        </a>
+        <a class="card" href="configurateur-garage.html">
+          <div class="card-visual"><img src="img/cat-garage.png" alt="Porte de garage"></div>
+          <h3>Porte de garage</h3>
+          <p>Sectionnelle motorisée, à partir de 990 €.</p>
+        </a>
+        <a class="card" href="porte-entree.html">
+          <div class="card-visual"><img src="img/cat-porte.png" alt="Porte d'entrée"></div>
+          <h3>Porte d'entrée</h3>
+          <p>Moderne ou classique, PVC sur mesure.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap factory">
+      <img class="factory-photo" src="img/usine.png" alt="Atelier de fabrication">
+      <div>
+        <h2>Fabrication française direct usine</h2>
+        <p>Produits conçus et assemblés sur mesure. Qualité, proximité et prix fabricant.</p>
+        <div class="hours">
+          <h3>Showroom & atelier</h3>
+          <p>Lundi au vendredi : 9h00 à 17h30<br>Samedi : 9h00 à 12h</p>
+          <p>Adresse à renseigner</p>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- SECTION PRODUITS / GAMMES -->
-    <section id="produits" class="produits">
-        <h2>Nos Produits</h2>
-        <div class="produits-container">
-            <div class="carte-produit">
-                <img src="./images/fenetre (24).jpeg" alt="Fenêtre en PVC">
-                <h3>Fenêtres</h3>
-                <p>L'isolation thermique à petit prix. Disponible en plusieurs couleurs.</p>
-            </div>
-            <div class="carte-produit">
-<img src="./images/fenetre (4).jpeg" alt="Fenêtre en PVC">         
-       <h3>Portes</h3>
-                <p>Authentique et chaleureux, pour une isolation naturelle.</p>
-            </div>
-            <div class="carte-produit">
-<img src="./images/fenetre (17).jpeg" alt="Fenêtre en PVC">               
- <h3>Portes-Fenêtres</h3>
-                <p>Design contemporain, mince et résistant, idéal pour les grandes baies.</p>
-            </div>
-        </div>
-    </section>
+  <section class="section">
+    <div class="wrap">
+      <h2 class="center">Avis clients</h2>
+      <div class="reviews" style="margin-top:20px">
+        <article class="card"><div class="stars">★★★★★</div><p>Commande simple, cotes respectées, délai tenu. Parfait pour les bricoleurs.</p><b>Luc P.</b></article>
+        <article class="card"><div class="stars">★★★★★</div><p>Livraison plus rapide que prévu, notice claire, motorisation déjà réglée.</p><b>Bosson A.</b></article>
+        <article class="card"><div class="stars">★★★★★</div><p>Produit bien emballé. Merci pour le suivi et le devis immédiat.</p><b>Alain D.</b></article>
+        <article class="card"><div class="stars">★★★★★</div><p>Le configurateur permet vraiment de chiffrer avant de commander.</p><b>Marie L.</b></article>
+      </div>
+    </div>
+  </section>
 
-    <!-- SECTION SERVICES / AVANTAGES -->
-    <section id="produits" class="produits">
-        <h2>Nos Réalisations</h2>
-        <div class="produits-container">
-            <div class="carte-produit">
-                <img src="./images/fenetre (28).jpeg" alt="Fenêtre en PVC">
-                <h3>Fenêtres</h3>
-                <p>L'isolation thermique à petit prix. Disponible en plusieurs couleurs.</p>
-            </div>
-            <div class="carte-produit">
-<img src="./images/fenetre (37).jpeg" alt="Fenêtre en PVC">         
-       <h3>Portes</h3>
-                <p>Authentique et chaleureux, pour une isolation naturelle.</p>
-            </div>
-            <div class="carte-produit">
-<img src="./images/fenetre (39).jpeg" alt="Fenêtre en PVC">               
- <h3>Portes-Fenêtres</h3>
-                <p>Design contemporain, mince et résistant, idéal pour les grandes baies.</p>
-            </div>
-        </div>
-    </section>
+  <section class="section" style="padding-top:0">
+    <div class="wrap factory">
+      <img class="factory-photo" src="img/aide.png" alt="Service client">
+      <div>
+        <h2>Besoin d'aide ?</h2>
+        <p>Prise de cotes, pose, motorisation : le service client répond à vos questions techniques.</p>
+        <p style="font-size:32px;font-weight:800;color:var(--navy);margin:8px 0">03 00 00 00 00</p>
+        <p class="hint">Lun–Ven 9h–17h30 · Sam 9h–12h</p>
+        <a class="btn btn-navy" href="contact.html">Contactez-nous</a>
+      </div>
+    </div>
+  </section>
 
-    <!-- SECTION CONTACT / DEVIS -->
-    <section id="contact" class="contact">
-        <h2>Contactez-nous</h2>
-        <div class="contact-container">
-            <form>
-                <label for="nom">Nom et prénom</label>
-                <input type="text" id="nom" name="nom" required>
-
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
-
-                <label for="message">Votre projet</label>
-                <textarea id="message" name="message" rows="5" required></textarea>
-
-                <button type="submit" class="btn">Envoyer la demande</button>
-            </form>
-            <div class="contact-infos">
-                <p><i class="fas fa-phone-alt"></i> 01 23 45 67 89</p>
-                <p><i class="fas fa-envelope"></i> fenetre@gmail.com</p>
-                <p><i class="fas fa-map-marker-alt"></i> 6 IMPASSE VOLTAIRE 93700 DRANCY</p>
-                <p>Ouvert du lundi au vendredi, 9h - 18h</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- PIED DE PAGE -->
-    <footer>
-        <p>&copy; 2026 - Tous droits réservés. Mentions légales & Politique de confidentialité.</p>
-    </footer>
-
+  <script src="js/cart.js"></script>
+  <script src="js/layout.js"></script>
 </body>
 </html>

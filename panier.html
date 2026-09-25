@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Devis / panier — Direct Usine</title>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="wrap section">
+    <h1 class="page-title">Votre devis</h1>
+    <p id="cart-empty" class="cart-empty" hidden>Aucun produit. <a href="configurateur-volet.html">Chiffrer un volet</a></p>
+    <table id="cart-table" class="cart-table" hidden>
+      <thead><tr><th>Produit</th><th>Qté</th><th>Prix</th><th></th></tr></thead>
+      <tbody id="cart-body"></tbody>
+      <tfoot><tr><th colspan="2">Total TTC</th><th id="cart-total">0 €</th><th></th></tr></tfoot>
+    </table>
+    <p class="hint">Panier local (navigateur). Pas de paiement : à brancher plus tard.</p>
+  </div>
+  <script src="js/pricing.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/panier.js"></script>
+</body>
+</html>

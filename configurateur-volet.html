@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Configurateur volet roulant — Direct Usine</title>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="wrap">
+    <p class="crumbs"><a href="index.html">Accueil</a> · <a href="volet-roulant.html">Volet roulant</a> · Sur mesure</p>
+    <h1 class="page-title">Volet roulant sur mesure</h1>
+    <p class="lead">Dimensions, couleur, pose, motorisation… le prix se met à jour en direct.</p>
+    <div class="help-strip">
+      <div>Fabrication française</div>
+      <div>Garantie 5 ans</div>
+      <div>Livraison 15 jours ouvrés</div>
+      <div>Retrait magasin</div>
+    </div>
+
+    <div class="config-layout">
+      <form id="configVr" class="config-form">
+        <h2>Type de volet</h2>
+        <div class="option-row">
+          <label class="option"><img class="opt-img" src="img/cat-volet.png" alt=""> <input type="radio" name="type_volet" value="reno" checked> Rénovation<br><small>Coffre extérieur ALU</small></label>
+          <label class="option"><img class="opt-img" src="img/pose-tradi.svg" alt=""> <input type="radio" name="type_volet" value="tradi"> Traditionnel<br><small>Sans coffre</small></label>
+          <label class="option"><img class="opt-img" src="img/pose-mono.svg" alt=""> <input type="radio" name="type_volet" value="mono"> Monobloc<br><small>Coffre intérieur PVC</small></label>
+        </div>
+
+        <div id="block-pose">
+          <h2>Pose du volet</h2>
+          <div class="option-row">
+            <label class="option"><img class="opt-img" src="img/pose-a.svg" alt=""> <input type="radio" name="pose" value="renoA" checked> Pose A<br><small>Sous linteau</small></label>
+            <label class="option"><img class="opt-img" src="img/pose-b.svg" alt=""> <input type="radio" name="pose" value="renoB"> Pose B<br><small>Sous linteau inversé</small></label>
+            <label class="option"><img class="opt-img" src="img/pose-c.svg" alt=""> <input type="radio" name="pose" value="renoC"> Pose C<br><small>En façade</small></label>
+          </div>
+        </div>
+
+        <h2 id="block-dimensions">Dimensions</h2>
+        <div class="dims">
+          <div class="field">
+            <label id="title-h" for="hauteur-tab">Hauteur entre murs</label>
+            <input id="hauteur-tab" name="hauteurTab" type="number" value="700" min="400" max="3000" step="1">
+            <div class="hint">de <span id="minH">700</span> à <span id="maxH">3000</span> mm</div>
+          </div>
+          <div class="field">
+            <label id="title-l" for="largeur-tab">Largeur entre murs</label>
+            <input id="largeur-tab" name="largeurTab" type="number" value="900" min="400" max="3000" step="1">
+            <div class="hint">de <span id="minL">700</span> à <span id="maxL">3000</span> mm</div>
+          </div>
+        </div>
+        <p class="hint">Les cotes de fabrication sont calculées automatiquement selon le type de pose.</p>
+        <div class="fab-box">
+          <div>Fabrication <strong>H <span id="HautFinal">700</span> × L <span id="LargFinal">895</span> mm</strong></div>
+          <div>Surface <strong><span id="surface">0.63</span> m²</strong></div>
+          <div id="block-coffre">Coffre 45° <strong><span id="Tcoffre">150</span> mm</strong></div>
+        </div>
+        <p class="error" id="global-error"></p>
+
+        <h2>Manœuvre</h2>
+        <div class="option-row">
+          <label class="option"><img class="opt-img" src="img/ico-moteur.svg" alt=""> <input id="man-filaire-gm" type="radio" name="manoeuvre" value="filaire-gm" checked> Filaire</label>
+          <label class="option"><img class="opt-img" src="img/ico-moteur.svg" alt=""> <input type="radio" name="manoeuvre" value="filaire-somfy"> Filaire Somfy</label>
+          <label class="option"><img class="opt-img" src="img/ico-moteur.svg" alt=""> <input type="radio" name="manoeuvre" value="radio-gm"> Radio</label>
+          <label class="option"><img class="opt-img" src="img/ico-moteur.svg" alt=""> <input type="radio" name="manoeuvre" value="deltadore"> Radio Delta Dore</label>
+          <label class="option"><img class="opt-img" src="img/ico-sangle.svg" alt=""> <input id="man-sangle" type="radio" name="manoeuvre" value="sangle"> Sangle</label>
+          <label class="option"><img class="opt-img" src="img/ico-sangle.svg" alt=""> <input type="radio" name="manoeuvre" value="manivelle"> Manivelle</label>
+          <label class="option"><img class="opt-img" src="img/ico-moteur.svg" alt=""> <input id="man-solaire-gm" type="radio" name="manoeuvre" value="solaire-gm"> Solaire</label>
+        </div>
+
+        <div id="acc-filaire">
+          <h3>Commandes filaire</h3>
+          <div class="option-row">
+            <label class="option"><input type="checkbox" name="accessoire" value="inverseurEncastre"> Inverseur encastré 4,90 €</label>
+            <label class="option"><input type="checkbox" name="accessoire" value="inverseurApplique"> Inverseur applique 9,90 €</label>
+            <label class="option"><input type="checkbox" name="accessoire" value="interrupteurEncastre"> Interrupteur encastré 10,90 €</label>
+          </div>
+        </div>
+        <div id="acc-radio" hidden>
+          <h3>Télécommandes radio</h3>
+          <div class="option-row">
+            <label class="option"><input type="checkbox" name="accessoire" value="telecommande1"> Télécommande 1 canal 19,90 €</label>
+            <label class="option"><input type="checkbox" name="accessoire" value="telecommande5"> Télécommande 5 canaux 25,90 €</label>
+            <label class="option"><input type="checkbox" name="accessoire" value="recepteur"> Récepteur mural 34,90 €</label>
+          </div>
+        </div>
+        <div id="acc-delta" hidden>
+          <p class="hint">Accessoires Delta Dore : devis magasin (non chiffrés ici).</p>
+        </div>
+        <div id="acc-solaire" hidden>
+          <p class="hint">Chargeur batterie solaire disponible en option magasin.</p>
+        </div>
+
+        <div id="block-sortie">
+          <h2>Sortie de manœuvre</h2>
+          <p class="hint">Vue intérieure : côté du coffre d'où sort l'alimentation ou la sangle.</p>
+          <div class="option-row">
+            <label class="option sortie-haut"><input type="radio" name="sortie" value="GH"> GH</label>
+            <label class="option sortie-haut"><input type="radio" name="sortie" value="DH"> DH</label>
+            <label class="option sortie-bas"><input type="radio" name="sortie" value="GB" checked> GB</label>
+            <label class="option sortie-bas"><input type="radio" name="sortie" value="DB"> DB</label>
+          </div>
+        </div>
+
+        <h2>Type de lames</h2>
+        <div class="option-row">
+          <label class="option"><input type="radio" name="type-lame" value="alu39" checked> ALU 39/8</label>
+          <label class="option"><input id="lame-pvc" type="radio" name="type-lame" value="pvc39"> PVC 39/8</label>
+        </div>
+
+        <div id="block-coulisse">
+          <h2>Coulisses</h2>
+          <div class="option-row">
+            <label class="option"><input type="radio" name="coulisse" value="reno-u" checked> U 53 × 22 mm</label>
+            <label class="option"><input id="coulisse-l" type="radio" name="coulisse" value="reno-l"> L 53 × 60 mm</label>
+          </div>
+        </div>
+
+        <h2>Couleur des lames</h2>
+        <div class="swatch-row">
+          <label class="swatch"><i class="c-9016"></i><input type="radio" name="couleur-lame" value="9016" checked> Blanc 9016</label>
+          <label class="swatch"><i class="c-7016"></i><input class="lame-color-extra" type="radio" name="couleur-lame" value="7016"> Gris 7016</label>
+          <label class="swatch"><i class="c-8019"></i><input class="lame-color-extra" type="radio" name="couleur-lame" value="8019"> Brun 8019</label>
+          <label class="swatch"><i class="c-7039"></i><input class="lame-color-extra" type="radio" name="couleur-lame" value="7039"> Gris 7039</label>
+          <label class="swatch"><i class="c-9005"></i><input class="lame-color-extra" type="radio" name="couleur-lame" value="9005"> Noir 9005</label>
+          <label class="swatch"><i class="c-chene"></i><input class="lame-color-extra" type="radio" name="couleur-lame" value="chenedore"> Chêne doré</label>
+        </div>
+
+        <h2>Couleur ossature</h2>
+        <p class="hint">Coffre, coulisses et lame finale</p>
+        <div class="swatch-row">
+          <label class="swatch"><i class="c-9016"></i><input type="radio" name="couleur-ossature" value="9016" checked> Blanc 9016</label>
+          <label class="swatch"><i class="c-7016"></i><input type="radio" name="couleur-ossature" value="7016"> Gris 7016</label>
+          <label class="swatch"><i class="c-8019"></i><input type="radio" name="couleur-ossature" value="8019"> Brun 8019</label>
+          <label class="swatch"><i class="c-7039"></i><input type="radio" name="couleur-ossature" value="7039"> Gris 7039</label>
+          <label class="swatch"><i class="c-9005"></i><input type="radio" name="couleur-ossature" value="9005"> Noir 9005</label>
+        </div>
+
+        <h2>Attaches</h2>
+        <div class="option-row">
+          <label class="option"><input type="radio" name="attache" value="souple" checked> Souple</label>
+          <label class="option"><input id="attache-rigide" type="radio" name="attache" value="rigide"> Rigide</label>
+        </div>
+
+        <h2>Compléter la commande</h2>
+        <div class="option-row">
+          <label class="option"><input type="checkbox" name="accessoire" value="vis"> Vis béton 5,00 €</label>
+          <label class="option"><input type="checkbox" name="accessoire" value="mousse"> Mousse PU 9,90 €</label>
+          <label class="option"><input type="checkbox" name="accessoire" value="mastic"> Mastic silicone 4,90 €</label>
+        </div>
+      </form>
+
+      <aside class="sticky-price">
+        <div class="preview" id="preview">
+          <img class="preview-photo" src="img/config-volet.png" alt="Aperçu volet">
+          <div class="preview-coffre" id="preview-coffre"></div>
+          <div class="preview-slats" id="preview-slats"></div>
+        </div>
+        <div class="price-old" id="old-price"></div>
+        <p class="price-now" id="prixttc">—</p>
+        <p class="price-4x">Payez en 4× <span id="prix-4x">—</span></p>
+        <p class="recap" id="recap"></p>
+        <div class="qty-row">
+          <select id="quantite" name="quantite">
+            <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+            <option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
+          </select>
+        </div>
+        <button class="btn" type="button" id="add-cart" style="width:100%">Ajouter au devis</button>
+      </aside>
+    </div>
+  </div>
+
+  <script src="js/pricing.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/config-volet.js"></script>
+</body>
+</html>

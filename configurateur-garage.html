@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Configurateur porte de garage — Direct Usine</title>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="wrap">
+    <p class="crumbs"><a href="index.html">Accueil</a> · <a href="porte-garage.html">Porte de garage</a> · Sectionnelle</p>
+    <h1 class="page-title">Porte de garage sectionnelle sur mesure</h1>
+    <p class="lead">À partir de 990 €. Motorisation 800 Nm et 2 télécommandes incluses. Panneaux acier 40 mm.</p>
+
+    <div class="config-layout">
+      <form id="configGarage" class="config-form">
+        <h2>Dimensions de passage</h2>
+        <div class="dims">
+          <div class="field">
+            <label for="hauteur">Hauteur (mm)</label>
+            <input id="hauteur" type="number" value="2000">
+            <div class="hint">min 1800 — max 3000</div>
+          </div>
+          <div class="field">
+            <label for="largeur">Largeur (mm)</label>
+            <input id="largeur" type="number" value="2400">
+            <div class="hint">min 1900 — max 3000</div>
+          </div>
+          <div class="field">
+            <label for="linteau">Hauteur de linteau (mm)</label>
+            <input id="linteau" type="number" value="250">
+            <div class="hint">min 120 — traction arrière si &lt; 200 mm</div>
+          </div>
+          <div class="field">
+            <label for="eco-g">Écoinçon gauche (mm)</label>
+            <input id="eco-g" type="number" value="100">
+          </div>
+          <div class="field">
+            <label for="eco-d">Écoinçon droit (mm)</label>
+            <input id="eco-d" type="number" value="100">
+          </div>
+        </div>
+        <p class="hint" id="traction-info" hidden>Linteau &lt; 200 mm : système de traction arrière +270 €.</p>
+        <p class="error" id="global-error"></p>
+
+        <h2>Motif</h2>
+        <div class="option-row">
+          <label class="option"><img class="opt-img" src="img/cat-garage.png" alt=""> <input type="radio" name="motif" value="lisse" checked> Lisse</label>
+          <label class="option"><img class="opt-img" src="img/cat-garage.png" alt=""> <input type="radio" name="motif" value="cassette"> Cassette</label>
+        </div>
+
+        <h2>Couleur</h2>
+        <div class="swatch-row">
+          <label class="swatch"><i class="c-9016"></i><input type="radio" name="couleur" value="9016" checked> Blanc</label>
+          <label class="swatch"><i class="c-7016"></i><input type="radio" name="couleur" value="7016"> Gris 7016</label>
+          <label class="swatch"><i class="c-8019"></i><input type="radio" name="couleur" value="8019"> Brun</label>
+          <label class="swatch"><i class="c-9005"></i><input type="radio" name="couleur" value="9005"> Noir</label>
+          <label class="swatch"><i class="c-7039"></i><input type="radio" name="couleur" value="ral"> Autre RAL</label>
+        </div>
+
+        <h2>Options</h2>
+        <label class="option"><input id="portillon" type="checkbox"> Portillon (+199 €, hauteur min. 2000 mm)</label>
+        <div class="dims" style="margin-top:12px">
+          <div class="field">
+            <label for="hublots-rect">Hublots rectangle</label>
+            <select id="hublots-rect"><option value="0">0</option><option>3</option><option>4</option></select>
+          </div>
+          <div class="field">
+            <label for="hublots-ligne">Hublots ligne</label>
+            <select id="hublots-ligne"><option value="0">0</option><option>1</option><option>2</option><option>3</option></select>
+          </div>
+        </div>
+      </form>
+
+      <aside class="sticky-price">
+        <div class="preview"><img class="preview-photo" src="img/config-garage.png" alt="Aperçu porte de garage"></div>
+        <div class="price-old" id="old-price"></div>
+        <p class="price-now" id="prixttc">—</p>
+        <p class="price-4x">Payez en 4× <span id="prix-4x">—</span></p>
+        <p class="recap" id="recap"></p>
+        <div class="qty-row"><select id="quantite"><option>1</option><option>2</option></select></div>
+        <button class="btn" type="button" id="add-cart" style="width:100%">Ajouter au devis</button>
+      </aside>
+    </div>
+  </div>
+  <script src="js/pricing.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/config-garage.js"></script>
+</body>
+</html>

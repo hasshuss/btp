@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact — Direct Usine</title>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="wrap section">
+    <h1 class="page-title">Contactez-nous</h1>
+    <div class="contact-grid">
+      <form onsubmit="event.preventDefault(); alert('Formulaire modèle : branchez ensuite e-mail / CRM.');">
+        <label class="field">Nom<input required></label>
+        <label class="field">E-mail<input type="email" required></label>
+        <label class="field">Téléphone<input></label>
+        <label class="field">Message<textarea required></textarea></label>
+        <button class="btn" type="submit">Envoyer</button>
+      </form>
+      <div>
+        <h2>Service client</h2>
+        <p style="font-size:28px;font-weight:800;color:var(--navy)">03 00 00 00 00</p>
+        <p>contact@direct-usine.fr</p>
+        <p>Lun–Ven 9h–17h30 · Sam 9h–12h</p>
+        <p>Adresse showroom à renseigner</p>
+      </div>
+    </div>
+  </div>
+  <script src="js/cart.js"></script>
+  <script src="js/layout.js"></script>
+</body>
+</html>

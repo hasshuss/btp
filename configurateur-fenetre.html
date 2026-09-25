@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Configurateur fenêtre PVC — Direct Usine</title>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="wrap">
+    <p class="crumbs"><a href="index.html">Accueil</a> · <a href="fenetre.html">Fenêtre PVC</a> · Sur mesure</p>
+    <h1 class="page-title">Fenêtre, porte et baie sur mesure</h1>
+    <p class="lead">Prix immédiat. Garantie 10 ans. Profilé PVC 70 mm, 5 chambres.</p>
+
+    <div class="config-layout">
+      <form id="configFen" class="config-form">
+        <h2>Type de menuiserie</h2>
+        <div class="option-row">
+          <label class="option"><img class="opt-img" src="img/cat-fenetre.png" alt=""> <input type="radio" name="type" value="fenetre" checked> Fenêtre</label>
+          <label class="option"><img class="opt-img" src="img/config-fenetre.png" alt=""> <input type="radio" name="type" value="porte-fenetre"> Porte-fenêtre / service</label>
+          <label class="option"><img class="opt-img" src="img/config-fenetre.png" alt=""> <input type="radio" name="type" value="porte-balcon"> Porte balcon</label>
+          <label class="option"><img class="opt-img" src="img/cat-fenetre.png" alt=""> <input type="radio" name="type" value="coulissant"> Coulissant</label>
+        </div>
+
+        <h2>Type de pose</h2>
+        <div class="option-row">
+          <label class="option"><input type="radio" name="pose" value="neuf" checked> Neuf / dépose totale</label>
+          <label class="option"><input type="radio" name="pose" value="applique"> Applique isolation</label>
+          <label class="option"><input type="radio" name="pose" value="reno"> Rénovation (ancien bâti bois)</label>
+        </div>
+
+        <h2>Dimensions saisies</h2>
+        <div class="dims">
+          <div class="field">
+            <label for="hauteur">Hauteur (mm)</label>
+            <input id="hauteur" type="number" value="1300">
+            <div class="hint" id="limH">400–1950</div>
+          </div>
+          <div class="field">
+            <label for="largeur">Largeur (mm)</label>
+            <input id="largeur" type="number" value="1400">
+            <div class="hint" id="limL">400–2500</div>
+          </div>
+        </div>
+        <div class="fab-box">
+          <div>Hors tout <strong>H <span id="HautFinal">1330</span> × L <span id="LargFinal">1460</span></strong></div>
+          <div>Surface <strong><span id="surface">1.94</span> m²</strong></div>
+          <div>Profilé <strong>PVC 70 mm</strong></div>
+        </div>
+        <p class="error" id="global-error"></p>
+
+        <h2>Ouverture</h2>
+        <div class="option-row">
+          <label class="option"><input type="radio" name="vantaux" value="1"> 1 vantail</label>
+          <label class="option"><input type="radio" name="vantaux" value="2" checked> 2 vantaux</label>
+          <label class="option"><input type="radio" name="vantaux" value="3"> 3 vantaux</label>
+        </div>
+        <label class="option" style="margin-top:10px"><input id="oscillo" type="checkbox"> Oscillo-battant (+38 €)</label>
+
+        <h2>Vitrage</h2>
+        <div class="option-row">
+          <label class="option"><input type="radio" name="vitrage" value="standard" checked> Standard 4 FE / argon</label>
+          <label class="option"><input type="radio" name="vitrage" value="phonique"> Phonique</label>
+          <label class="option"><input type="radio" name="vitrage" value="feuilleté"> Feuilleté 1 face</label>
+          <label class="option"><input type="radio" name="vitrage" value="feuilleté-double"> Feuilleté 2 faces</label>
+        </div>
+        <label class="option" style="margin-top:10px"><input id="warm-edge" type="checkbox"> Intercalaire Warm Edge (+18 €)</label>
+        <label class="option" style="margin-top:10px"><input id="croisillon" type="checkbox"> Croisillons intégrés (+55 €)</label>
+
+        <h2>Couleur</h2>
+        <div class="option-row">
+          <label class="option"><input type="radio" name="couleur" value="blanc" checked> Blanc 2 faces</label>
+          <label class="option"><input type="radio" name="couleur" value="1face"> Couleur 1 face ext.</label>
+          <label class="option"><input type="radio" name="couleur" value="2faces"> Couleur 2 faces</label>
+        </div>
+
+        <h2>Volet monobloc</h2>
+        <label class="option"><input id="volet-mono" type="checkbox"> Ajouter un volet monobloc (+145 € de base, cotes recalculées magasin)</label>
+      </form>
+
+      <aside class="sticky-price">
+        <div class="preview"><img class="preview-photo" src="img/config-fenetre.png" alt="Aperçu fenêtre"></div>
+        <div class="price-old" id="old-price"></div>
+        <p class="price-now" id="prixttc">—</p>
+        <p class="price-4x">Payez en 4× <span id="prix-4x">—</span></p>
+        <p class="recap" id="recap"></p>
+        <div class="qty-row">
+          <select id="quantite"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+        </div>
+        <button class="btn" type="button" id="add-cart" style="width:100%">Ajouter au devis</button>
+      </aside>
+    </div>
+  </div>
+  <script src="js/pricing.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/config-fenetre.js"></script>
+</body>
+</html>
