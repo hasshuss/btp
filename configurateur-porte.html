@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Configurateur porte d'entrée — Direct Usine</title>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="wrap">
+    <p class="crumbs"><a href="index.html">Accueil</a> · <a href="porte-entree.html">Porte d'entrée</a> · Sur mesure</p>
+    <h1 class="page-title">Porte d'entrée sur mesure</h1>
+    <p class="lead">Tarifs direct usine calibrés sous le marché (hors pose) — remise −20 % incluse dans le prix affiché.</p>
+    <nav class="wizard-steps" id="wizard-steps">
+      <a href="#step-1">1. Modèle</a>
+      <a href="#step-2">2. Type de pose</a>
+      <a href="#step-3">3. Dimensions</a>
+      <a href="#step-4">4. Sens &amp; ouverture</a>
+      <a href="#step-5">5. Couleur</a>
+      <a href="#step-6">6. Vitrage</a>
+      <a href="#step-7">7. Serrure &amp; poignée</a>
+    </nav>
+
+    <div class="config-layout">
+      <form id="configPorte" class="config-form">
+        <section id="step-1">
+          <h2>1. Modèle porte d'entrée</h2>
+          <p class="info-note">Les dessins représentent une vue de l'intérieur. Utilisez « Changer vue » à droite pour l'extérieur. Visuels originaux, non contractuels.</p>
+          <h3>Catalogue Masterline — portes à panneau PVC</h3>
+          <p class="hint">Choisissez la finition (regroupement par couleur), puis la référence MSxxxx.</p>
+          <div id="catalog-by-color" class="catalog-by-color"></div>
+          <div class="step-next"><a class="btn" href="#step-2">Étape suivante</a></div>
+        </section>
+
+        <section id="step-2">
+          <h2>2. Type de pose</h2>
+          <div class="option-row">
+            <label class="option">
+              <input type="radio" name="pose" value="applique" checked>
+              <b>En applique</b>
+              <small>Pose contre le mur intérieur, sur l'isolant. Fabrication : largeur +60 mm, hauteur +30 mm.</small>
+            </label>
+            <label class="option">
+              <input type="radio" name="pose" value="tunnel">
+              <b>En tunnel</b>
+              <small>Pose dans l'épaisseur du mur. Fabrication : largeur et hauteur −10 mm.</small>
+            </label>
+            <label class="option">
+              <input type="radio" name="pose" value="feuillure">
+              <b>En feuillure</b>
+              <small>Dormant dans la feuillure de l'ancien mur. Fabrication : largeur +60 mm, hauteur +30 mm.</small>
+            </label>
+          </div>
+          <div class="step-next"><a class="btn" href="#step-3">Étape suivante</a></div>
+        </section>
+
+        <section id="step-3">
+          <h2>3. Dimensions</h2>
+          <p>Prenez vos dimensions de mur à mur. Mesurez à 3 endroits et indiquez les cotes les plus basses.</p>
+          <h3>Entre murs (cotes tableau)</h3>
+          <div class="dims">
+            <div class="field">
+              <label for="hauteur">Hauteur (mm)</label>
+              <input id="hauteur" type="number" value="2000" min="1800" max="2500" step="1">
+              <div class="hint" id="limH">1800–2500 mm</div>
+            </div>
+            <div class="field">
+              <label for="largeur">Largeur (mm)</label>
+              <input id="largeur" type="number" value="1000" min="700" max="2000" step="1">
+              <div class="hint" id="limL">700–2000 mm</div>
+            </div>
+          </div>
+          <h3>Hors tout (cotes de fabrication)</h3>
+          <p class="hint">Calcul automatique selon le type de pose.</p>
+          <div class="fab-box">
+            <div>Hauteur <strong><span id="HautFinal">2030</span> mm</strong></div>
+            <div>Largeur <strong><span id="LargFinal">1060</span> mm</strong></div>
+            <div>Surface <strong><span id="surface">2.15</span> m²</strong></div>
+          </div>
+          <p class="error" id="global-error"></p>
+          <p class="hint" id="dim-warn"></p>
+          <div class="step-next"><a class="btn" href="#step-4">Étape suivante</a></div>
+        </section>
+
+        <section id="step-4">
+          <h2>4. Type d'ouverture</h2>
+          <p class="info-note">Photos schématiques vues de l'intérieur : vous êtes dedans et vous tirez la porte. Les ouvertures grisées ne sont pas disponibles avec vos dimensions.</p>
+          <p class="hint">Ouvrant max. 2250 mm de haut et 1150 mm de large (hors tout). Au-delà, imposte et/ou partie fixe obligatoires.</p>
+          <h3>Tirant gauche</h3>
+          <div class="opening-grid" id="ouv-gauche"></div>
+          <h3>Tirant droit</h3>
+          <div class="opening-grid" id="ouv-droite"></div>
+          <div id="block-fixes" class="subopts" hidden>
+            <div class="dims">
+              <div class="field" id="field-imposte" hidden>
+                <label for="h-imposte">Hauteur imposte (mm)</label>
+                <input id="h-imposte" type="number" value="300" min="300" max="600">
+                <div class="hint">300–600 mm</div>
+              </div>
+              <div class="field" id="field-tierce" hidden>
+                <label for="l-tierce">Largeur tierce (mm)</label>
+                <input id="l-tierce" type="number" value="300" min="300" max="600">
+                <div class="hint">300–600 mm</div>
+              </div>
+            </div>
+          </div>
+          <div class="step-next"><a class="btn" href="#step-5">Étape suivante</a></div>
+        </section>
+
+        <section id="step-5">
+          <h2>5. Couleur</h2>
+          <p class="hint" id="color-hint">Cliquez sur « Changer vue » pour passer de l'extérieur à l'intérieur.</p>
+          <div class="color-block">
+            <h3>Face extérieur</h3>
+            <div class="swatch-row" id="swatch-ext"></div>
+            <h3>Face intérieur</h3>
+            <div class="swatch-row" id="swatch-int"></div>
+          </div>
+          <div class="step-next"><a class="btn" href="#step-6">Étape suivante</a></div>
+        </section>
+
+        <section id="step-6">
+          <h2>6. Vitrage</h2>
+          <div id="block-vitrage-panneau">
+            <h3>Vitrage du panneau</h3>
+            <div class="option-row">
+              <label class="option"><input type="radio" name="vitrage-panneau" value="depoli" checked><b>Feuilleté 33.2 — Dépoli</b><small>Double vitrage sécurité, décor dépoli.</small></label>
+              <label class="option"><input type="radio" name="vitrage-panneau" value="chinchilla"><b>Feuilleté 33.2 — Chinchilla + croisillons</b><small>Croisillons blancs incorporés.</small></label>
+              <label class="option"><input type="radio" name="vitrage-panneau" value="delta"><b>Feuilleté 33.2 — Delta clair</b><small>Décor delta clair.</small></label>
+            </div>
+            <p class="hint" id="no-glass" hidden>Votre panneau décoratif ne contient aucun vitrage.</p>
+          </div>
+          <div id="block-vitrage-tierce" hidden>
+            <h3>Vitrage tierce</h3>
+            <p class="hint">Double vitrage 28 mm FE — Ug 1,1</p>
+            <div class="option-row">
+              <label class="option"><input type="radio" name="vitrage-tierce" value="332" checked> Feuilleté 33.2</label>
+              <label class="option"><input type="radio" name="vitrage-tierce" value="442"> Feuilleté 44.2</label>
+            </div>
+            <label class="option" style="margin-top:10px"><input id="warm-tierce" type="checkbox"> Intercalaire Warm Edge</label>
+            <h4>Décor</h4>
+            <div class="option-row" id="decor-tierce"></div>
+            <div class="dims" style="margin-top:10px">
+              <div class="field"><label for="crois-h-tierce">Croisillons horizontaux</label><select id="crois-h-tierce"><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option></select></div>
+              <div class="field"><label for="crois-v-tierce">Croisillons verticaux</label><select id="crois-v-tierce"><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option></select></div>
+            </div>
+          </div>
+          <div id="block-vitrage-imposte" hidden>
+            <h3>Vitrage imposte</h3>
+            <div class="option-row">
+              <label class="option"><input type="radio" name="vitrage-imposte" value="thermique" checked> Verre thermique</label>
+              <label class="option"><input type="radio" name="vitrage-imposte" value="332"> Feuilleté 33.2</label>
+              <label class="option"><input type="radio" name="vitrage-imposte" value="442"> Feuilleté 44.2</label>
+            </div>
+            <label class="option" style="margin-top:10px"><input id="warm-imposte" type="checkbox"> Intercalaire Warm Edge</label>
+            <h4>Décor</h4>
+            <div class="option-row" id="decor-imposte"></div>
+            <div class="dims" style="margin-top:10px">
+              <div class="field"><label for="crois-h-imposte">Croisillons horizontaux</label><select id="crois-h-imposte"><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option></select></div>
+              <div class="field"><label for="crois-v-imposte">Croisillons verticaux</label><select id="crois-v-imposte"><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option></select></div>
+            </div>
+          </div>
+          <h3>Volet roulant intégré</h3>
+          <label class="option"><input id="volet-integre" type="checkbox"> Ajouter un volet roulant intégré (+245 € de base)</label>
+          <div class="step-next"><a class="btn" href="#step-7">Étape suivante</a></div>
+        </section>
+
+        <section id="step-7">
+          <h2>7. Serrure &amp; poignée</h2>
+          <h3>Système de verrouillage</h3>
+          <h4>Serrure à relevage</h4>
+          <p class="hint">Le verrouillage s'effectue en relevant la poignée vers le haut.</p>
+          <div class="option-row">
+            <label class="option"><input type="radio" name="serrure" value="relevage-galets" checked><b>5 points (4 galets)</b></label>
+            <label class="option"><input type="radio" name="serrure" value="relevage-crochets"><b>5 points (2 galets, 2 crochets)</b></label>
+          </div>
+          <h4>Serrure automatique</h4>
+          <p class="hint">Verrouillage automatique à la fermeture (4 galets + pêne dormant).</p>
+          <div class="option-row">
+            <label class="option"><input type="radio" name="serrure" value="auto"><b>5 points (4 galets)</b></label>
+          </div>
+          <h4>Serrure porte palière — fermeture par le canon</h4>
+          <p class="hint">Pas de poignée à l'extérieur : bâton de tirage ou bouton.</p>
+          <div class="option-row">
+            <label class="option"><input type="radio" name="serrure" value="paliere-5"><b>5 points (4 galets)</b></label>
+            <label class="option"><input type="radio" name="serrure" value="paliere-3"><b>3 points (3 pênes demi-tour)</b></label>
+          </div>
+
+          <h3>Poignées</h3>
+          <p class="hint">Carré 8 mm, entraxe 92 mm. Poignée non posée. Bâton maréchal inox 50 cm.</p>
+          <h4>Extérieur</h4>
+          <div class="option-row" id="poignee-ext"></div>
+          <h4>Intérieur</h4>
+          <div class="option-row" id="poignee-int"></div>
+
+          <h3>Cylindre de serrure</h3>
+          <p class="hint">Fourni avec 3 clés — 45+50 mm</p>
+          <div class="option-row">
+            <label class="option"><input type="radio" name="cylindre" value="sans"> Sans</label>
+            <label class="option"><input type="radio" name="cylindre" value="varie" checked> Varié</label>
+            <label class="option"><input type="radio" name="cylindre" value="entrouvrant"> S'entrouvrant</label>
+          </div>
+        </section>
+      </form>
+
+      <aside class="sticky-price">
+        <button class="btn btn-ghost view-toggle" type="button" id="changer-vue">Changer vue</button>
+        <div class="preview preview-door" id="door-preview"></div>
+        <p class="hint" id="vue-label">Vue intérieur — image non contractuelle</p>
+        <p class="hint" id="pose-recap"></p>
+        <div class="price-old" id="old-price"></div>
+        <p class="price-now" id="prixttc">—</p>
+        <p class="price-4x">Payez en 4× <span id="prix-4x">—</span></p>
+        <p class="recap" id="recap"></p>
+        <div class="qty-row">
+          <select id="quantite"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+        </div>
+        <button class="btn" type="button" id="add-cart" style="width:100%">Valider ma porte</button>
+      </aside>
+    </div>
+  </div>
+
+  <script src="js/pricing.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/door-models-bundle.js"></script>
+  <script src="js/config-porte.js"></script>
+</body>
+</html>
