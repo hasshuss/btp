@@ -79,23 +79,11 @@ function headerHTML() {
           <a class="dropbtn" href="porte-entree.html">Porte d'entrée</a>
           <div class="dropdown-content">
             <div class="block-center">
-              ${tile("porte-entree.html", "img/cat-porte.png", "Porte d'entrée moderne sur mesure", true)}
-              ${tile("porte-entree.html", "img/cat-porte.png", "Porte d'entrée classique sur mesure", true)}
+              ${tile("configurateur-porte.html", "img/modele-masterline/ms7010.png", "Porte d'entrée Masterline sur mesure", true)}
+              ${tile("configurateur-porte.html?famille=pvc", "img/modele-masterline/ms8311.png", "Catalogue panneaux PVC MSxxxx", true)}
               ${tile("contact.html", "img/aide.png", "Accessoires pour porte d'entrée", true)}
               ${tile("contact.html", "img/usine.png", "Profils de finition", true)}
               ${tile("contact.html", "img/aide.png", "Accessoires de pose et d'entretien", true)}
-            </div>
-          </div>
-        </li>
-        <li class="dropdown icon-garage">
-          <a class="dropbtn" href="porte-garage.html">Porte de garage</a>
-          <div class="dropdown-content">
-            <div class="block-center">
-              ${tile("configurateur-garage.html", "img/cat-garage.png", "Porte de garage sectionnelle sur mesure", true)}
-              ${tile("configurateur-garage.html", "img/config-garage.png", "Porte de garage sectionnelle standard", false)}
-              ${tile("contact.html", "img/ico-moteur.svg", "Accessoires et moteur pour sectionnelle", true)}
-              ${tile("porte-garage.html", "img/cat-volet.png", "Porte de garage enroulable sur mesure", true)}
-              ${tile("contact.html", "img/ico-moteur.svg", "Accessoires et moteur pour enroulable", true)}
             </div>
           </div>
         </li>
@@ -103,9 +91,9 @@ function headerHTML() {
           <a class="dropbtn promo-spec" href="configurateur-volet.html">Promotion</a>
           <div class="dropdown-content">
             <div class="block-center">
-              ${tile("configurateur-volet.html", "img/cat-volet.png", "Volets -15%", true)}
-              ${tile("configurateur-fenetre.html", "img/cat-fenetre.png", "Fenêtres -15%", true)}
-              ${tile("configurateur-garage.html", "img/cat-garage.png", "Portes de garage -15%", true)}
+              ${tile("configurateur-volet.html", "img/cat-volet.png", "Volets -20%", true)}
+              ${tile("configurateur-fenetre.html", "img/cat-fenetre.png", "Fenêtres -20%", true)}
+              ${tile("configurateur-porte.html", "img/cat-porte.png", "Portes d'entrée -20%", true)}
             </div>
           </div>
         </li>
@@ -125,8 +113,7 @@ function headerHTML() {
   <a href="fenetre.html">Fenêtre PVC</a>
   <a href="configurateur-fenetre.html">→ Configurateur fenêtre</a>
   <a href="porte-entree.html">Porte d'entrée</a>
-  <a href="porte-garage.html">Porte de garage</a>
-  <a href="configurateur-garage.html">→ Configurateur garage</a>
+  <a href="configurateur-porte.html">→ Configurateur porte</a>
   <a href="contact.html">Contact / Mon compte</a>
   <a href="panier.html">Panier</a>
 </aside>`;
@@ -159,13 +146,13 @@ function footerHTML() {
       <a href="volet-roulant.html">Volet roulant</a>
       <a href="fenetre.html">Fenêtre PVC</a>
       <a href="porte-entree.html">Porte d'entrée</a>
-      <a href="porte-garage.html">Porte de garage</a>
     </div>
     <div>
       <h3>Aide</h3>
       <a href="contact.html">Contactez-nous</a>
       <a href="configurateur-volet.html">Chiffrage volet</a>
       <a href="configurateur-fenetre.html">Chiffrage fenêtre</a>
+      <a href="configurateur-porte.html">Chiffrage porte</a>
       <a href="panier.html">Votre devis</a>
     </div>
   </div>

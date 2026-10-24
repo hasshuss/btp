@@ -1,21 +1,22 @@
 /**
  * Grilles de prix — à modifier ici pour ajuster le chiffrage.
- * Tous les montants sont en euros TTC avant remise globale.
+ * Montants en euros TTC avant remise « direct usine » (promoPercent).
  *
- * Le calcul volet reprend les règles de fabrication (coffre, pose A/B/C,
- * traditionnel, monobloc) ; les tarifs sont une base éditable, pas ceux
- * du site d'origine.
+ * Repères marché porte PVC sur mesure (2025–2026, sources agrégées) :
+ * - fourni seul : ~400–2 600 € ; porte standard ~900 × 2 100 : ~1 300–2 000 €
+ * - au m² fourni : ~650–1 100 €/m² (haute isolation)
+ * - pose seule : ~200–500 € (non incluse ici — prix fabricant / livraison)
+ * La grille porte vise ~15–25 % sous le milieu de gamme en ligne, hors pose.
  */
 window.PRICING = {
-  promoPercent: 15,
+  promoPercent: 20,
 
   volet: {
     prixM2: {
-      reno: { alu39: 210, pvc39: 165 },
-      tradi: { alu39: 175, pvc39: 135 },
-      mono: { alu39: 245, pvc39: 195 },
+      reno: { alu39: 198, pvc39: 155 },
+      tradi: { alu39: 165, pvc39: 128 },
     },
-    min: { reno: 99, tradi: 79, mono: 129 },
+    min: { reno: 89, tradi: 72 },
     moteur: {
       "filaire-gm": 45,
       "filaire-somfy": 95,
@@ -46,16 +47,16 @@ window.PRICING = {
 
   fenetre: {
     prixM2: {
-      fenetre: 290,
-      "porte-fenetre": 340,
-      "porte-balcon": 325,
-      coulissant: 380,
+      fenetre: 258,
+      "porte-fenetre": 302,
+      "porte-balcon": 289,
+      coulissant: 338,
     },
     min: {
-      fenetre: 149,
-      "porte-fenetre": 249,
-      "porte-balcon": 229,
-      coulissant: 399,
+      fenetre: 132,
+      "porte-fenetre": 219,
+      "porte-balcon": 199,
+      coulissant: 359,
     },
     vantaux: { 1: 0, 2: 45, 3: 95 },
     oscillo: 38,
@@ -72,19 +73,47 @@ window.PRICING = {
     voletMono: 145,
   },
 
-  garage: {
-    base: 990,
-    par100mmLargeur: 28,
-    par100mmHauteur: 24,
-    refLargeur: 2000,
-    refHauteur: 2000,
-    motifCassette: 0,
-    couleur: { "9016": 0, "7016": 80, "8019": 80, "9005": 95, ral: 140 },
-    portillon: 199,
-    hublotRect: 45,
-    hublotLigne: 62,
-    tractionArriere: 270,
-    linteauMinTraction: 200,
+  porte: {
+    prixM2: { pvc: 268, alu: 328 },
+    min: { pvc: 619, alu: 949 },
+    pose: { applique: 0, tunnel: 0, feuillure: 22 },
+    tierce: 185,
+    imposte: 155,
+    /** Finition panneau Masterline (hors blanc catalogue). */
+    finitionPanneau: 38,
+    couleurFace: { "9016": 0, "7016": 62, chene: 78, "9011": 72, "7039": 62 },
+    vitragePanneau: { depoli: 0, chinchilla: 38, delta: 28, none: 0 },
+    vitrageFixe: { "332": 0, "442": 48, thermique: 0 },
+    warmEdge: 18,
+    decor: {
+      clair: 0,
+      g200: 12,
+      depoli: 18,
+      chinchilla: 22,
+      olivier: 26,
+      "delta-clair": 20,
+      "delta-mat": 20,
+    },
+    croisillonUnite: 6,
+    voletIntegre: 215,
+    serrure: {
+      "relevage-galets": 0,
+      "relevage-crochets": 42,
+      auto: 82,
+      "paliere-5": 32,
+      "paliere-3": 10,
+    },
+    poignee: {
+      sans: 0,
+      baton: 72,
+      "paliere-blanc": 24,
+      "paliere-ano": 34,
+      blanc: 18,
+      gris: 18,
+      marron: 18,
+      anodise: 26,
+    },
+    cylindre: { sans: 0, varie: 22, entrouvrant: 36 },
   },
 
   accessoires: {
@@ -128,7 +157,6 @@ window.PricingEngine = {
     let LFinal = Ltab;
     let HFinal = Htab;
     let coffre = this.dimCoffre(Htab, colorOssature);
-    const coffreMono = 185;
 
     if (type === "reno") {
       if (pose === "renoC") {
@@ -141,9 +169,6 @@ window.PricingEngine = {
       }
     } else if (type === "tradi") {
       HFinal = Htab + 250;
-    } else {
-      HFinal = Htab + coffreMono;
-      coffre = coffreMono;
     }
 
     if (Number.isNaN(Ltab)) LFinal = 0;
@@ -158,7 +183,7 @@ window.PricingEngine = {
     };
   },
 
-  limitsVolet({ lame, manoeuvre, type }) {
+  limitsVolet({ lame, manoeuvre }) {
     const lim = { hmin: 700, lmin: 700, hmax: 3000, lmax: 3000 };
     lim.lmin = manoeuvre === "solaire-gm" ? 900 : 700;
     if (lame === "alu39") {
@@ -168,7 +193,6 @@ window.PricingEngine = {
       lim.lmax = 2100;
       if (manoeuvre === "sangle") lim.hmax = 2200;
     }
-    if (type === "mono") lim.hmax = 2165;
     return lim;
   },
 
@@ -232,18 +256,58 @@ window.PricingEngine = {
     return { dim, produit, total: produit.ttc, qty };
   },
 
-  priceGarage(cfg) {
-    const P = window.PRICING.garage;
-    const extraL = Math.max(0, Math.ceil((cfg.largeur - P.refLargeur) / 100)) * P.par100mmLargeur;
-    const extraH = Math.max(0, Math.ceil((cfg.hauteur - P.refHauteur) / 100)) * P.par100mmHauteur;
-    let base = P.base + extraL + extraH;
-    base += P.couleur[cfg.couleur] || 0;
-    if (cfg.portillon) base += P.portillon;
-    base += (cfg.hublotsRect || 0) * P.hublotRect;
-    base += (cfg.hublotsLigne || 0) * P.hublotLigne;
-    if (cfg.linteau < P.linteauMinTraction) base += P.tractionArriere;
+  dimFinalPorte({ pose, H, L }) {
+    let addH = 0;
+    let addL = 0;
+    if (pose === "applique" || pose === "feuillure") {
+      addH = 30;
+      addL = 60;
+    } else if (pose === "tunnel") {
+      addH = -10;
+      addL = -10;
+    }
+    return { haut: H + addH, larg: L + addL, surface: ((H + addH) * (L + addL)) / 1e6 };
+  },
+
+  pricePorte(cfg) {
+    const P = window.PRICING.porte;
+    const dim = this.dimFinalPorte(cfg);
+    const fam = cfg.famille || "pvc";
+    let base = Math.max(P.min[fam], dim.surface * P.prixM2[fam]);
+    base += P.pose[cfg.pose] || 0;
+    if (cfg.ouverture?.includes("tierce")) base += P.tierce;
+    if (cfg.ouverture?.includes("imposte")) base += P.imposte;
+    if (fam === "alu") {
+      base += P.couleurFace[cfg.couleurExt] || 0;
+      base += P.couleurFace[cfg.couleurInt] || 0;
+    }
+    if (
+      fam === "pvc" &&
+      cfg.varianteCouleur &&
+      cfg.varianteCouleur !== "Blanc"
+    ) {
+      base += P.finitionPanneau || 0;
+    }
+    if (cfg.hasGlass) base += P.vitragePanneau[cfg.vitragePanneau] || 0;
+    if (cfg.ouverture?.includes("tierce")) {
+      base += P.vitrageFixe[cfg.vitrageTierce] || 0;
+      if (cfg.warmTierce) base += P.warmEdge;
+      base += P.decor[cfg.decorTierce] || 0;
+      base += ((cfg.croisHTierce || 0) + (cfg.croisVTierce || 0)) * P.croisillonUnite;
+    }
+    if (cfg.ouverture?.includes("imposte")) {
+      base += P.vitrageFixe[cfg.vitrageImposte] || 0;
+      if (cfg.warmImposte) base += P.warmEdge;
+      base += P.decor[cfg.decorImposte] || 0;
+      base += ((cfg.croisHImposte || 0) + (cfg.croisVImposte || 0)) * P.croisillonUnite;
+    }
+    if (cfg.voletIntegre) base += P.voletIntegre;
+    base += P.serrure[cfg.serrure] || 0;
+    base += P.poignee[cfg.poigneeExt] || 0;
+    base += P.poignee[cfg.poigneeInt] || 0;
+    base += P.cylindre[cfg.cylindre] || 0;
     const qty = cfg.qty || 1;
     const produit = this.applyPromo(base * qty);
-    return { produit, total: produit.ttc, qty };
+    return { dim, produit, total: produit.ttc, qty };
   },
 };

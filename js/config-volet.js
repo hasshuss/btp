@@ -40,7 +40,7 @@ function collect() {
 
 function labels() {
   return {
-    types: { reno: "Rénovation", tradi: "Traditionnel", mono: "Monobloc" },
+    types: { reno: "Rénovation", tradi: "Traditionnel" },
     poses: { renoA: "Pose A sous linteau", renoB: "Pose B inversée", renoC: "Pose C façade" },
     mans: {
       "filaire-gm": "Filaire",
@@ -60,10 +60,8 @@ function updateUI() {
   show("#block-pose, #block-coffre, #block-coulisse", type === "reno");
   show("#block-sortie", type !== "tradi");
 
-  document.getElementById("title-h").textContent =
-    type === "mono" ? "Hauteur hors tout de la fenêtre" : "Hauteur entre murs";
-  document.getElementById("title-l").textContent =
-    type === "mono" ? "Largeur hors tout de la fenêtre" : "Largeur entre murs";
+  document.getElementById("title-h").textContent = "Hauteur entre murs";
+  document.getElementById("title-l").textContent = "Largeur entre murs";
 
   if (type !== "reno" && cfg.manoeuvre === "solaire-gm") {
     document.getElementById("man-filaire-gm").checked = true;
@@ -109,7 +107,7 @@ function updateUI() {
   if (live.manoeuvre === "solaire-gm" || live.manoeuvre === "manivelle") {
     show(".sortie-bas", false);
     show(".sortie-haut", true);
-  } else if (live.pose === "renoC" || live.type === "mono") {
+  } else if (live.pose === "renoC") {
     show(".sortie-haut", false);
     show(".sortie-bas", true);
   } else {
